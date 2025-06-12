@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kangoo Runner</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kangoo Jump - Jeu de l'arrière-pays niçois</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="gameCanvas" width="512" height="288"></canvas>
-  <script src="game.js"></script>
+    <div class="game-container">
+        <!-- Écran d'accueil -->
+        <div id="start-screen">
+            <h1>Kangoo Jump</h1>
+            <div class="game-image">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1749755098/gpt4o_images/q7zxhzl8e71fjmrda0ul.png" alt="Kangoo blanche" class="kangoo-image">
+            </div>
+            <p>Faites sauter la Kangoo pour éviter les sangliers !</p>
+            <p class="instructions">
+                <span class="desktop-instructions">Appuyez sur <span class="key">ESPACE</span> pour sauter</span>
+                <span class="mobile-instructions">Tapotez l'écran pour sauter</span>
+            </p>
+            <button id="start-button" class="btn btn--primary">Jouer</button>
+        </div>
+
+        <!-- Écran de jeu -->
+        <div id="game-screen" class="hidden">
+            <div id="score">0</div>
+            <canvas id="game-canvas"></canvas>
+        </div>
+
+        <!-- Écran de game over -->
+        <div id="game-over-screen" class="hidden">
+            <h2>Partie terminée !</h2>
+            <div class="chat-container">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1749755304/gpt4o_images/bkmfv5gmnjpjr9z9zfet.png" alt="Chat roux" class="chat-image">
+                <div class="chat-bubble">Bravo ! Ton score: <span id="final-score">0</span></div>
+            </div>
+            <button id="restart-button" class="btn btn--primary">Rejouer</button>
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="jump-sound" preload="auto">
+        <source src="https://assets.codepen.io/21542/howler-push.mp3" type="audio/mp3">
+    </audio>
+    <audio id="crash-sound" preload="auto">
+        <source src="https://assets.codepen.io/21542/howler-sfx-levelup.mp3" type="audio/mp3">
+    </audio>
+    <audio id="game-over-sound" preload="auto">
+        <source src="https://assets.codepen.io/21542/howler-sfx-fail2.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="app.js"></script>
 </body>
 </html>
